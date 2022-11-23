@@ -1,0 +1,20 @@
+[package]
+name = "mangadex-aidoku"
+version = "0.2.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+opt-level = "s"
+strip = true
+lto = true
+
+[dependencies]
+aidoku = { git = "https://github.com/JustaTama/Aidoku-VN-Sources/tree/main/Aidoku-rs" }
+itoa = "1.0.2"

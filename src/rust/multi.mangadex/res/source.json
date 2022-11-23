@@ -1,0 +1,18 @@
+{
+	"info": {
+		"id": "multi.mangadex",
+		"lang": "multi",
+		"name": "MangaDex",
+		"url": "https://mangadex.org",
+		"version": 4,
+		"minAppVersion": "0.5"
+	},
+	"languages": [
+		{ "code": "en", "value": "en" },
+		{ "code": "vi", "value": "vi", "default": true }
+	],
+	"listings": [
+		{ "name": "Popular" },
+		{ "name": "Latest" }
+	]
+}
