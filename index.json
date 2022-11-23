@@ -1,0 +1,156 @@
+[
+  {
+    "id": "multi.mangadex",
+    "name": "MangaDex",
+    "file": "multi.mangadex-v4.aix",
+    "icon": "multi.mangadex-v4.png",
+    "lang": "multi",
+    "version": 4,
+    "nsfw": 0,
+    "minAppVersion": "0.5"
+  },
+  {
+    "id": "multi.myrockmanga",
+    "name": "MyRockManga",
+    "file": "multi.myrockmanga-v1.aix",
+    "icon": "multi.myrockmanga-v1.png",
+    "lang": "multi",
+    "version": 1,
+    "nsfw": 2
+  },
+  {
+    "id": "multi.nhentai",
+    "name": "NHentai",
+    "file": "multi.nhentai-v2.aix",
+    "icon": "multi.nhentai-v2.png",
+    "lang": "multi",
+    "version": 2,
+    "nsfw": 2
+  },
+  {
+    "id": "multi.otakusan",
+    "name": "Otaku Sanctuary",
+    "file": "multi.otakusan-v1.aix",
+    "icon": "multi.otakusan-v1.png",
+    "lang": "multi",
+    "version": 1,
+    "nsfw": 2
+  },
+  {
+    "id": "vi.blogtruyen",
+    "name": "BlogTruyen",
+    "file": "vi.blogtruyen-v1.aix",
+    "icon": "vi.blogtruyen-v1.png",
+    "lang": "vi",
+    "version": 1,
+    "nsfw": 1
+  },
+  {
+    "id": "vi.fecomic",
+    "name": "Fecomic",
+    "file": "vi.fecomic-v5.aix",
+    "icon": "vi.fecomic-v5.png",
+    "lang": "vi",
+    "version": 5,
+    "nsfw": 1
+  },
+  {
+    "id": "vi.hentaicube",
+    "name": "HentaiCB",
+    "file": "vi.hentaicube-v5.aix",
+    "icon": "vi.hentaicube-v5.png",
+    "lang": "vi",
+    "version": 5,
+    "nsfw": 2
+  },
+  {
+    "id": "vi.hentaivn",
+    "name": "HentaiVN",
+    "file": "vi.hentaivn-v2.aix",
+    "icon": "vi.hentaivn-v2.png",
+    "lang": "vi",
+    "version": 2,
+    "nsfw": 2
+  },
+  {
+    "id": "vi.lkdtt",
+    "name": "LKDTT",
+    "file": "vi.lkdtt-v1.aix",
+    "icon": "vi.lkdtt-v1.png",
+    "lang": "vi",
+    "version": 1,
+    "nsfw": 1
+  },
+  {
+    "id": "vi.nettruyen",
+    "name": "NetTruyen",
+    "file": "vi.nettruyen-v3.aix",
+    "icon": "vi.nettruyen-v3.png",
+    "lang": "vi",
+    "version": 3,
+    "nsfw": 1
+  },
+  {
+    "id": "vi.phemanga",
+    "name": "Phê Manga",
+    "file": "vi.phemanga-v1.aix",
+    "icon": "vi.phemanga-v1.png",
+    "lang": "vi",
+    "version": 1,
+    "nsfw": 1
+  },
+  {
+    "id": "vi.truyenqq",
+    "name": "TruyenQQ",
+    "file": "vi.truyenqq-v2.aix",
+    "icon": "vi.truyenqq-v2.png",
+    "lang": "vi",
+    "version": 2,
+    "nsfw": 1
+  },
+  {
+    "id": "vi.truyentranh8",
+    "name": "Truyện Tranh 8",
+    "file": "vi.truyentranh8-v1.aix",
+    "icon": "vi.truyentranh8-v1.png",
+    "lang": "vi",
+    "version": 1,
+    "nsfw": 2
+  },
+  {
+    "id": "vi.truyentranhaudio",
+    "name": "TruyentranhAudio",
+    "file": "vi.truyentranhaudio-v1.aix",
+    "icon": "vi.truyentranhaudio-v1.png",
+    "lang": "vi",
+    "version": 1,
+    "nsfw": 1
+  },
+  {
+    "id": "vi.truyentranhlh",
+    "name": "TruyentranhLH",
+    "file": "vi.truyentranhlh-v1.aix",
+    "icon": "vi.truyentranhlh-v1.png",
+    "lang": "vi",
+    "version": 1,
+    "nsfw": 1
+  },
+  {
+    "id": "vi.yocomic",
+    "name": "Yocomic",
+    "file": "vi.yocomic-v5.aix",
+    "icon": "vi.yocomic-v5.png",
+    "lang": "vi",
+    "version": 5,
+    "nsfw": 1
+  },
+  {
+    "id": "vi.yurineko",
+    "name": "YuriNeko",
+    "file": "vi.yurineko-v2.aix",
+    "icon": "vi.yurineko-v2.png",
+    "lang": "vi",
+    "version": 2,
+    "nsfw": 2
+  }
+]
