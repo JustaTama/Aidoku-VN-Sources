@@ -2,10 +2,10 @@
   {
     "id": "multi.mangadex",
     "name": "MangaDex",
-    "file": "multi.mangadex-v4.aix",
-    "icon": "multi.mangadex-v4.png",
+    "file": "multi.mangadex-v6.aix",
+    "icon": "multi.mangadex-v6.png",
     "lang": "multi",
-    "version": 4,
+    "version": 6,
     "nsfw": 0,
     "minAppVersion": "0.5"
   },
@@ -48,28 +48,28 @@
   {
     "id": "vi.fecomic",
     "name": "Fecomic",
-    "file": "vi.fecomic-v5.aix",
-    "icon": "vi.fecomic-v5.png",
+    "file": "vi.fecomic-v6.aix",
+    "icon": "vi.fecomic-v6.png",
     "lang": "vi",
-    "version": 5,
+    "version": 6,
     "nsfw": 1
   },
   {
     "id": "vi.hentaicube",
     "name": "HentaiCB",
-    "file": "vi.hentaicube-v5.aix",
-    "icon": "vi.hentaicube-v5.png",
+    "file": "vi.hentaicube-v6.aix",
+    "icon": "vi.hentaicube-v6.png",
     "lang": "vi",
-    "version": 5,
+    "version": 6,
     "nsfw": 2
   },
   {
     "id": "vi.hentaivn",
     "name": "HentaiVN",
-    "file": "vi.hentaivn-v2.aix",
-    "icon": "vi.hentaivn-v2.png",
+    "file": "vi.hentaivn-v3.aix",
+    "icon": "vi.hentaivn-v3.png",
     "lang": "vi",
-    "version": 2,
+    "version": 3,
     "nsfw": 2
   },
   {
@@ -84,10 +84,10 @@
   {
     "id": "vi.nettruyen",
     "name": "NetTruyen",
-    "file": "vi.nettruyen-v3.aix",
-    "icon": "vi.nettruyen-v3.png",
+    "file": "vi.nettruyen-v4.aix",
+    "icon": "vi.nettruyen-v4.png",
     "lang": "vi",
-    "version": 3,
+    "version": 4,
     "nsfw": 1
   },
   {
