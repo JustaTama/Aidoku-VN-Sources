@@ -3,7 +3,7 @@ Kho lưu trữ này lưu trữ các nguồn công khai có thể cài đặt tr�
 
 ## Cách sử dụng
 [Nhấn vào đây để thêm Source](https://aidoku.app/add-source-list/?url=https://raw.githubusercontent.com/JustaTama/Aidoku-VN-Sources/gh-pages/).
-Khi nhấn vào sẽ tự chuyển tiếp qua Aidoku.
+Khi nhấn vào sẽ tự chuyển tiếp qua ứng dụng Aidoku.
 
 ## Contributing
 Contributions are welcome!
