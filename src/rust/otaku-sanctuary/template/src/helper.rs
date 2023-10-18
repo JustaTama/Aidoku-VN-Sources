@@ -24,7 +24,10 @@ pub fn urlencode(string: String) -> String {
 
 	for byte in bytes {
 		let curr = *byte;
-		if curr.is_ascii_lowercase() || curr.is_ascii_uppercase() || curr.is_ascii_digit() {
+		if (b'a'..=b'z').contains(&curr)
+			|| (b'A'..=b'Z').contains(&curr)
+			|| (b'0'..=b'9').contains(&curr)
+		{
 			result.push(curr);
 		} else {
 			result.push(b'%');
@@ -37,11 +40,9 @@ pub fn urlencode(string: String) -> String {
 
 pub fn get_lang_code() -> String {
 	let mut code = String::from("vn");
-	if let Ok(languages_value) = defaults_get("languages") {
-		if let Ok(languages) = languages_value.as_array() {
-			if let Ok(language) = languages.get(0).as_string() {
-				code = language.read();
-			}
+	if let Ok(languages) = defaults_get("languages").as_array() {
+		if let Ok(language) = languages.get(0).as_string() {
+			code = language.read();
 		}
 	}
 	code
@@ -50,16 +51,15 @@ pub fn get_lang_code() -> String {
 pub fn text_with_newlines(node: Node) -> String {
 	let html = node.html().read();
 	if !String::from(html.trim()).is_empty() {
-		if let Ok(node) = Node::new_fragment(
+		Node::new_fragment(
 			node.html()
 				.read()
 				.replace("<br>", "{{ .LINEBREAK }}")
 				.as_bytes(),
-		) {
-			node.text().read().replace("{{ .LINEBREAK }}", "\n")
-		} else {
-			String::new()
-		}
+		)
+		.text()
+		.read()
+		.replace("{{ .LINEBREAK }}", "\n")
 	} else {
 		String::new()
 	}

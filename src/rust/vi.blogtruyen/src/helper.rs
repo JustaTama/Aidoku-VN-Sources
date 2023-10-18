@@ -73,16 +73,15 @@ pub fn category_parser(categories: &Vec<String>) -> (MangaContentRating, MangaVi
 pub fn text_with_newlines(node: Node) -> String {
 	let html = node.html().read();
 	if !String::from(html.trim()).is_empty() {
-		if let Ok(node) = Node::new_fragment(
+		Node::new_fragment(
 			node.html()
 				.read()
 				.replace("<br>", "{{ .LINEBREAK }}")
 				.as_bytes(),
-		) {
-			node.text().read().replace("{{ .LINEBREAK }}", "\n")
-		} else {
-			String::new()
-		}
+		)
+		.text()
+		.read()
+		.replace("{{ .LINEBREAK }}", "\n")
 	} else {
 		String::new()
 	}

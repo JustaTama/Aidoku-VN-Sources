@@ -23,9 +23,10 @@ pub fn get_search_url(filters: Vec<Filter>, page: i32) -> String {
 			}
 			FilterType::Genre => {
 				if filter.value.as_int().unwrap_or(-1) == 1 {
-					if let Ok(id) = filter.object.get("id").as_string() {
+					if let Ok(id ) = filter.object.get("id").as_string() {
 						qs.push("tag[]", Some(&id.read()));
 					}
+					
 				}
 			}
 			_ => continue,
