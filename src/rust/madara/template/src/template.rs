@@ -29,6 +29,7 @@ pub struct MadaraSiteData {
 	pub search_selector: String,
 	pub image_selector: String,
 	pub genre_selector: String,
+	pub author_selector: String,
 	pub description_selector: String,
 	pub chapter_selector: String,
 	pub base_id_selector: String,
@@ -48,6 +49,8 @@ pub struct MadaraSiteData {
 	pub viewer: fn(&Node, &Vec<String>) -> MangaViewer,
 	pub status: fn(&Node) -> MangaStatus,
 	pub nsfw: fn(&Node, &Vec<String>) -> MangaContentRating,
+
+	pub ignore_class: String,
 }
 
 impl Default for MadaraSiteData {
@@ -68,6 +71,8 @@ impl Default for MadaraSiteData {
 			post_type: String::from("wp-manga"),
 			// p to select description from
 			description_selector: String::from("div.description-summary div p"),
+			// a to select author from
+			author_selector: String::from("div.author-content a"),
 			// selector for chapter list
 			chapter_selector: String::from("li.wp-manga-chapter"),
 			// a to get the base id from requests to admin-ajax.php
@@ -131,9 +136,12 @@ impl Default for MadaraSiteData {
 					.to_lowercase();
 				match status_str.as_str() {
 					"ongoing" => MangaStatus::Ongoing,
+					"releasing" => MangaStatus::Ongoing,
 					"completed" => MangaStatus::Completed,
 					"canceled" => MangaStatus::Cancelled,
+					"dropped" => MangaStatus::Cancelled,
 					"hiatus" => MangaStatus::Hiatus,
+					"on hold" => MangaStatus::Hiatus,
 					_ => MangaStatus::Unknown,
 				}
 			},
@@ -164,6 +172,8 @@ impl Default for MadaraSiteData {
 					MangaContentRating::Safe
 				}
 			},
+			// Ignore MangaPageResult manga with this class from a listing. Usually used for novels.
+			ignore_class: String::from(".web-novel"),
 			// Localization stuff
 			status_filter_ongoing: String::from("Ongoing"),
 			status_filter_completed: String::from("Completed"),
@@ -194,12 +204,12 @@ pub fn get_manga_list(
 pub fn get_search_result(data: MadaraSiteData, url: String) -> Result<MangaPageResult> {
 	let html = Request::new(url.as_str(), HttpMethod::Get)
 		.header("Cookie", &data.search_cookies)
-		.html();
+		.html()?;
 	let mut manga: Vec<Manga> = Vec::new();
 	let mut has_more = false;
 
 	for item in html.select(data.search_selector.as_str()).array() {
-		let obj = item.as_node();
+		let obj = item.as_node().expect("node array");
 
 		let id = obj
 			.select("a")
@@ -243,17 +253,17 @@ pub fn get_series_page(data: MadaraSiteData, listing: &str, page: i32) -> Result
 
 	let req = Request::new(url.as_str(), HttpMethod::Post)
 		.body(body_content.as_bytes())
+		.header("Referer", &data.base_url)
 		.header("Content-Type", "application/x-www-form-urlencoded");
 
-	let html = req.html();
+	let html = req.html()?;
 
 	let mut manga: Vec<Manga> = Vec::new();
 	let mut has_more = false;
 	for item in html.select("div.page-item-detail").array() {
-		let obj = item.as_node();
+		let obj = item.as_node().expect("node array");
 
-		let w_novel = obj.select(".web-novel").text().read();
-		if !w_novel.is_empty() {
+		if !obj.select(&data.ignore_class).text().read().is_empty() {
 			continue;
 		}
 
@@ -318,7 +328,7 @@ pub fn get_manga_listing(
 pub fn get_manga_details(manga_id: String, data: MadaraSiteData) -> Result<Manga> {
 	let url = data.base_url.clone() + "/" + data.source_path.as_str() + "/" + manga_id.as_str();
 
-	let html = Request::new(url.as_str(), HttpMethod::Get).html();
+	let html = Request::new(url.as_str(), HttpMethod::Get).html()?;
 
 	// These are useless badges that are added to the title like "HOT", "NEW", etc.
 	let title_badges = html.select("span.manga-title-badges").text().read();
@@ -328,13 +338,13 @@ pub fn get_manga_details(manga_id: String, data: MadaraSiteData) -> Result<Manga
 		title = String::from(title.trim());
 	}
 	let cover = get_image_url(html.select("div.summary_image img"));
-	let author = html.select("div.author-content a").text().read();
+	let author = html.select(&data.author_selector).text().read();
 	let artist = html.select("div.artist-content a").text().read();
 	let description = html.select(&data.description_selector).text().read();
 
 	let mut categories: Vec<String> = Vec::new();
 	for item in html.select(data.genre_selector.as_str()).array() {
-		categories.push(item.as_node().text().read());
+		categories.push(item.as_node().expect("node array").text().read());
 	}
 
 	let status = (data.status)(&html);
@@ -370,13 +380,14 @@ pub fn get_chapter_list(manga_id: String, data: MadaraSiteData) -> Result<Vec<Ch
 
 	let req = Request::new(url.as_str(), HttpMethod::Post)
 		.body(body_content.as_bytes())
+		.header("Referer", &data.base_url)
 		.header("Content-Type", "application/x-www-form-urlencoded");
 
-	let html = req.html();
+	let html = req.html()?;
 
 	let mut chapters: Vec<Chapter> = Vec::new();
 	for item in html.select(&data.chapter_selector).array() {
-		let obj = item.as_node();
+		let obj = item.as_node().expect("node array");
 
 		let id = obj
 			.select("a")
@@ -465,7 +476,7 @@ pub fn get_chapter_list(manga_id: String, data: MadaraSiteData) -> Result<Vec<Ch
 
 pub fn get_page_list(chapter_id: String, data: MadaraSiteData) -> Result<Vec<Page>> {
 	let url = data.base_url.clone() + "/" + data.source_path.as_str() + "/" + chapter_id.as_str();
-	let html = Request::new(url.as_str(), HttpMethod::Get).html();
+	let html = Request::new(url.as_str(), HttpMethod::Get).html()?;
 
 	let mut pages: Vec<Page> = Vec::new();
 	for (index, item) in html
@@ -475,7 +486,7 @@ pub fn get_page_list(chapter_id: String, data: MadaraSiteData) -> Result<Vec<Pag
 	{
 		pages.push(Page {
 			index: index as i32,
-			url: get_image_url(item.as_node()),
+			url: get_image_url(item.as_node().expect("node array")),
 			base64: String::new(),
 			text: String::new(),
 		});
