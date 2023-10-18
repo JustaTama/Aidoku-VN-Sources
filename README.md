@@ -14,7 +14,7 @@
 ## Cài đặt
 IPA mới nhất sẽ luôn có sẵn từ [releases page](https://github.com/JustaTama/Aidoku-VN-Sources/releases).
 
-Để biết hướng dẫn cài đặt chi tiết, vui lòng kiểm tra [the website](https://aidoku.app). Để tham gia TestFlight, bạn cần tham gia [Aidoku Discord](https://discord.gg/9U8cC5Zk3s).
+Để biết hướng dẫn cài đặt chi tiết, vui lòng kiểm tra [website](https://aidoku.app). Để tham gia TestFlight, bạn cần tham gia vào [Aidoku Discord](https://discord.gg/9U8cC5Zk3s) và xem hướng dẫn cài đặt.
 
 # Aidoku Sources
 Kho lưu trữ này lưu trữ các nguồn công khai có thể cài đặt trực tiếp thông qua ứng dụng Aidoku.
