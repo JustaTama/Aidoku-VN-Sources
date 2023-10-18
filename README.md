@@ -1,10 +1,11 @@
 # Aidoku
 Ứng dụng đọc truyện tranh mã nguồn mở miễn phí cho iOS và iPadOS.
 
-## Chức năng
-- [x] Không quảng cáo
+## Tính năng
+- [x] Không có quảng cáo
 - [x] Hệ thống nguồn WASM mạnh mẽ
 - [x] Đọc trực tuyến thông qua các nguồn bên ngoài
+- [x] Tùy chỉnh riêng cho các nguồn VN
 - [x] Hỗ trợ đồng bộ iCloud
 - [x] Tải xuống
 - [x] Hỗ trợ theo dõi
@@ -18,7 +19,7 @@ IPA mới nhất sẽ luôn có sẵn từ [releases page](https://github.com/Ju
 # Aidoku Sources
 Kho lưu trữ này lưu trữ các nguồn công khai có thể cài đặt trực tiếp thông qua ứng dụng Aidoku.
 
-## Cách sử dụng
+## Cách thêm nguồn vào Aidoku
 [Nhấn vào đây để thêm Source](https://aidoku.app/add-source-list/?url=https://raw.githubusercontent.com/JustaTama/Aidoku-VN-Sources/gh-pages/).
 Khi nhấn vào sẽ tự chuyển tiếp qua ứng dụng Aidoku.
 
